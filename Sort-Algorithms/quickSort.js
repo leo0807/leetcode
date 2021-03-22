@@ -56,7 +56,7 @@ function _quickSort(num, left, right) {
     }
 }
 let tmp1 = [32, 4, 231, 42, 2, 6, 6, 7, 11];
-quickSort1(tmp1);
-// quickSort(tmp1, 0, 8)
+// quickSort1(tmp1);
+quickSort(tmp1, 0, 8)
 console.log(tmp1);
 

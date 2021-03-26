@@ -9,3 +9,5 @@ let fibonacci = function () {
         return result;
     }
 }();
+
+console.log(fibonacci(6));

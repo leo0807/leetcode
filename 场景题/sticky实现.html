@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Implementation</title>
+    <style>
+        .header{
+            width: 100%;
+            background-color: blue;
+            padding: 25px 0;
+        }
+        .sticky{
+            position: fixed;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div style='height: 200px;'></div>
+    <div class="header"></div>
+    <div style='height: 1000px;'></div>
+    <script>
+        let header = document.querySelector(".header");
+        let originOffsetY = header.offsetTop;
+        function onScroll(e){
+            window.scrollY >= originOffsetY? 
+                header.classList.add('sticky'):
+                header.classList.remove('sticky');
+        }
+        document.addEventListener('scroll', onScroll);
+    </script>
+</body>
+</html>

@@ -33,7 +33,6 @@ var lengthOfLongestSubstring = function (s) {
  * @return {number}
  */
 var lengthOfLongestSubstring2 = function (s) {
-    let set = new Set();
     let left = 0, res = 0, n = s.length;
     let map = new Map();
     for (let i = 0; i < n; i++) {
@@ -45,3 +44,32 @@ var lengthOfLongestSubstring2 = function (s) {
     }
     return res;
 };
+
+// 记录最长字符串
+var lengthOfLongestSubstring3 = function (s) {
+    let tmp = [];
+    let resArr = [];
+    let len = s.length, i = 0;
+    while (i < len) {
+        while (tmp.includes(s[i])) tmp.shift();
+        tmp.push(s[i]);
+        if (tmp.length > resArr.length) { resArr = [...tmp] };
+        i++;
+    }
+    return resArr.join("");
+};
+
+
+var lengthOfLongestSubstring4 = function (s) {
+    let left = 0, res = 0, n = s.length;
+    let map = new Map();
+    for (let i = 0; i < n; i++) {
+        if (map.has(s[i])) {
+            left = Math.max(left, map.get(s[i]) + 1);
+        }
+        map.set(s[i], i);
+        res = Math.max(res, i - left + 1);
+    }
+    return res;
+};
+console.log(lengthOfLongestSubstring3(" "));

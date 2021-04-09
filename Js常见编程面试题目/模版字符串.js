@@ -14,8 +14,8 @@ let data1 = {
     age: 18
 }
 function template(pattern, data) {
-    return pattern.replace(/\{\{(\w+)\}\}/g, function (match, key, index) {
-        console.log("match", match, "key", key, "index", index);
+    return pattern.replace(/\{\{(\w+)\}\}/g, function (_, key) {
+        // console.log("match", match, "key", key, "index", index);
         return data[key] || "";
     })
 }

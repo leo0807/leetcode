@@ -33,3 +33,27 @@ function d() {
 }
 d();
 // dbaec
+
+
+// 作者：心里的字节在跳动
+// 链接：https://www.nowcoder.com/discuss/598700?type=post&order=time&pos=&page=1&channel=-1&source_id=search_post_nctrack
+// 来源：牛客网
+
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.print = function () {
+    return this.name;
+};
+
+Person('abc');
+const a = new Person('abc').print.call({});
+console.log(a);
+
+const fn = () => {
+    this.x = 'z';
+};
+
+const b = { x: 'y' };
+fn.call(b);
+console.log(b);

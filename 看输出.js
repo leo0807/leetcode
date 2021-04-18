@@ -57,3 +57,4 @@ const fn = () => {
 const b = { x: 'y' };
 fn.call(b);
 console.log(b);
+// undefined {x: y}

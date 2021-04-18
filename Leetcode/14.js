@@ -13,4 +13,7 @@ var longestCommonPrefix = function (strs) {
     return res;
 };
 
+let strs = ['aa/bb/sd', 'aa/bb/wwewer', 'aa/bb/ddfff'];
+// => 'aa/bb'
+console.log(longestCommonPrefix(strs));
 

@@ -12,3 +12,29 @@ function dfs(res, num, idx) {
         [num[idx], num[i]] = [num[i], num[idx]];
     }
 }
+
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute2 = function (nums) {
+    let res = [];
+    const recursion = (path, set) => {
+        if (path.length === nums.length) {
+            res.push([...path]);
+            return;
+        }
+        for (let i = 0; i < nums.length; i++) {
+            if (!set.has(i)) {
+                path.push(nums[i]);
+                set.add(i);
+                recursion(path, set);
+                path.pop();
+                set.delete(i);
+            }
+        }
+    }
+    recursion([], new Set());
+    return res;
+};

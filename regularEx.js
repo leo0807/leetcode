@@ -18,3 +18,14 @@ function trans(str) {
 }
 
 console.log(trans('get-element-by-id'));
+
+// 获取16进制颜色
+function getHexColor(str) {
+    const pattern = new RegExp(/\d+/g);
+    console.log(str.match(pattern));
+    let res = str.match(pattern);
+    return res.reduce((prev, curr) => {
+        return prev + Number(curr).toString(16);
+    }, '#').toUpperCase();
+}
+// console.log(getHexColor('rgb(255, 255, 255)'));

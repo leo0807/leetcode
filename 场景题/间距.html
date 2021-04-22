@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <style>
+      .box {
+        width: 10px;
+        height: 10px;
+        border: 1px solid red;
+        margin: 1px;
+        padding: 1px;
+        background: blue;
+      }
+
+      #borderBox {
+        box-sizing: border-box;
+      }
+
+      #contentBox {
+        box-sizing: content-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="borderBox" class="box"></div> // 10px 蓝色区域 6 * 6
+    <div id="contentBox" class="box"></div> //14px 蓝色区域 10 * 10
+  </body>
+</html>

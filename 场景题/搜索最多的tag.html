@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div><div>1</div></div>
+  <div>2</div>
+  <div>3</div>
+  <div>4</div>
+  <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+  <script>
+      let dom = document.getElementsByTagName("html")[0];
+      let map = new Map();
+      function build(root){
+        let children = root.children;
+        for(let i = 0; i < children.length; i++){
+            let tag = children[i].tagName;
+            if(map.has(tag)){
+                map.set(tag, map.get(tag) + 1);
+            }else{
+                map.set(tag, 1);
+            }
+            build(children[i]);
+        }
+      }
+      build(dom);
+      let sortObj = Array.from(map).sort((a, b) => a[1] - b[1]);
+      let res = sortObj[sortObj.length - 1][0];
+      console.log(res);
+  </script>
+</body>
+</html>

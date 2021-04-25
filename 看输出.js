@@ -159,3 +159,39 @@ function print() {
     console.log(this.a)
 }
 print() // 报错 不能给 undefined 添加属性
+
+
+var func1 = x => x;
+var func2 = x => { x };
+var func3 = x => ({ x });
+
+console.log(func1(1)); // 1
+console.log(func2(2)); // undefined
+// 如果箭头后有{ } ，则{ } 内有return 则返回return后的值，没有 则返回undefined
+// 因为{}和函数体有冲突，相当于
+// var func2 = x => {x; return;}
+// 应改为 var func2 = x => {return x};
+console.log(func3(3)); // {x: 3}
+// 相当于 var func3 = x => { return { x: x } };
+
+
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.print = function () {
+    return this.name;
+};
+Person('abc'); ①
+console.log(name) // abc 此时this指向全局window
+const a = new Person('abc').print.call({});
+console.log(a); // undefined 此时this指向{}
+
+const fn = () => {
+    this.x = 'z';
+};
+const b = { x: 'y' };
+fn.call(b);
+console.log(b); // {x: 'y'}  实际上没做处理
+// ————————————————
+// 版权声明：本文为CSDN博主「鹿目圆」的原创文章，遵循CC 4.0 BY - SA版权协议，转载请附上原文出处链接及本声明。
+// 原文链接：https://blog.csdn.net/qq_36620428/article/details/114241228

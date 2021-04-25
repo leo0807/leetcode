@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .single{
+            width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .multi-line{
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- 单行文本 -->
+    <p class="single">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur doloremque, voluptatum minima, incidunt officiis similique iste cum nobis aperiam pariatur sit ipsum modi perferendis! Eos voluptates vero aliquid at fuga.</p>
+    <hr>
+    <hr>
+    <p class="multi-line">Lorem ipsum dolor sit amet, consectetur 
+        adipisicing elit. Unde numquam commodi iure necessitatibus 
+        nisi provident? Odit, voluptas nobis atque maxime cumque 
+        reiciendis modi saepe accusantium dolorum unde totam dicta 
+        beatae?</p>
+</body>
+</html>

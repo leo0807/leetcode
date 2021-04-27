@@ -195,3 +195,22 @@ console.log(b); // {x: 'y'}  实际上没做处理
 // ————————————————
 // 版权声明：本文为CSDN博主「鹿目圆」的原创文章，遵循CC 4.0 BY - SA版权协议，转载请附上原文出处链接及本声明。
 // 原文链接：https://blog.csdn.net/qq_36620428/article/details/114241228
+
+// 定义一个构造器，并扩充它的原型
+var Man = function (name) {
+    this.name = name;
+}
+Man.prototype.get_name = function () {
+    console.log(this.name);
+    return this.name;
+}
+// 利用 new 产生一个新的函数对象
+var myMan = new Man("hero");
+// 访问构造器上的扩充方法
+var name1 = myMan.get_name(); //hero
+setTimeout(myMan.get_name, 0); //undefined
+setTimeout(() => myMan.get_name(), 0); //hero
+let fn = myMan.get_name;
+fn(); //undefined
+// 每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象，
+// 而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。

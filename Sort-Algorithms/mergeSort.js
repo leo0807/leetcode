@@ -1,5 +1,6 @@
 function mergeSort(arr) {
     const len = arr.length;
+    if (len < 2) return arr;
     let middle = Math.floor(len / 2),
         left = arr.slice(0, middle),
         right = arr.slice(middle);
@@ -19,3 +20,5 @@ function merge(left, right) {
     while (right.length) res.push(right.shift());
     return res;
 }
+
+console.log(mergeSort([5, 1, 1, 2, 0, 0]));

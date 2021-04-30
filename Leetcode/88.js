@@ -10,3 +10,20 @@ const merge = function (nums1, m, nums2, n) {
         nums1[len--] = nums1[len1] >= nums2[len2] ? nums1[len1--] : nums2[len2--]
     }
 };
+
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge2 = function (nums1, m, nums2, n) {
+    let maxLen = m-- + n-- - 1;
+    while (m >= 0 && n >= 0) {
+        nums1[maxLen--] = nums1[m] > nums2[n] ? nums1[m--] : nums2[n--];
+    }
+    while (n >= 0) {
+        nums1[maxLen--] = nums2[n--];
+    }
+};

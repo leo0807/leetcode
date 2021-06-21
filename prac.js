@@ -1,33 +1,44 @@
-//setTimeout(() => console.log('hi'), 500);
-const sleep = func(setTimeout);
-sleep(500).then(() => console.log('hi'));
-
-function func(fn) {
-    return function (...args) {
-        return new Promise((resolve) => {
-            args.unshift(resolve);
-            fn(...args);
-        });
-    }
+function fetch(method, url, data, count) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        method = method || "GET";
+        data = data || null;
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                resolve(xhr.responseText);
+            } else {
+                if (count > 0) {
+                    fetch(method, url, data, count - 1);
+                } else {
+                    reject(xhr.responseText);
+                }
+            }
+        }
+        xhr.send(data);
+    })
 }
 
-fs.readFile('1.txt', (err, data) => {
-});
-
-const newReadFile = promisify(fs.readFile);
-
-newReadFile('1.txt')
-    .then(data => { })
-    .catch(err => { });
-
-function promisify(fn) {
-    return function (...args) {
-        return new Promise(function (resolve, reject) {
-            args.push(function (error, result) {
-                if (error) reject(error);
-                else resolve(result);
-            })
-            fn(...args);
-        })
+function myNew(obj, ...args) {
+    if (typeof obj !== 'object' || obj === null) {
+        throw new TypeError('xxx');
     }
+    const newObj = Object.create(obj.prototype);
+    const res = obj.call(newObj, ...args);
+    return typeof res === 'object' ? res : newObj;
 }
+
+// function Parent() {
+//     this.name = 'father';
+// }
+// function Children() {
+//     Parent.call(this);
+//     this.age = 12;
+// }
+
+// Children.prototype = Object.create(Parent.prototype);
+// Children.prototype.constructor = Children;
+
+let arr1 = [[1], [2], [3]];
+arr1.map(itme => itme = null)
+console.log(arr1);

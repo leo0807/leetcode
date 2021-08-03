@@ -35,9 +35,9 @@ var isUnivalTree = function (root) {
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isUnivalTree = function (root, val = -1) {
+var isUnivalTree2 = function (root, val = -1) {
     if (!root) return true;
     if (val < 0) val = root.val;
-    return root.val === val && isUnivalTree(root.left, val) &&
-        isUnivalTree(root.right, val);
+    return root.val === val && isUnivalTree2(root.left, val) &&
+        isUnivalTree2(root.right, val);
 };

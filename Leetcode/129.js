@@ -23,3 +23,16 @@ var sumNumbers = function (root) {
     }
     return res.reduce((p, c) => p + c);
 };
+var sumNumbers2 = function (root) {
+    let sum = 0;
+    const dfs = function (root, val) {
+        if (!root) return;
+        if (!root.left && !root.right) {
+            sum += Number(val + root.val);
+        }
+        dfs(root.left, val + root.val);
+        dfs(root.right, val + root.val);
+    }
+    dfs(root, "");
+    return sum;
+};

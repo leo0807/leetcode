@@ -3,7 +3,6 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = function (matrix) {
-    var res = new Array();
     var row = matrix.length,
         col = matrix[0].length;
     var rowSet = new Set(),

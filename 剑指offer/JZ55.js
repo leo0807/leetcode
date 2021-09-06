@@ -19,3 +19,22 @@ var singleNumber = function (nums) {
     }
     return res;
 };
+// 位运算
+// 记录每个bit为1的次数。出现1次存在ones上。出现2次存在twos上。出现3次清除掉。
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function (nums) {
+    let ones = 0, twos = 0, commmonBitsMask = 0;
+    for (let i = 0, len = nums.length; i < len; i++) {
+        twos = twos | (ones & nums[i]);
+        ones ^= nums[i];
+
+        commmonBitsMask = ~(ones & twos);
+        ones &= commmonBitsMask;
+        twos &= commmonBitsMask;
+    }
+    return ones;
+};

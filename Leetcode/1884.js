@@ -14,3 +14,4 @@
 var twoEggDrop = function (n) {
     return Math.ceil((-1 + Math.sqrt(n * 8 + 1)) / 2);
 };
+

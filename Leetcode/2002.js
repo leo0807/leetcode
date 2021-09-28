@@ -2,6 +2,7 @@
  * @param {string} s
  * @return {number}
  */
+// 暴力法
 var maxProduct = function (s) {
     let res = 1;
     dfs(0, s, "", "");

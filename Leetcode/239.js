@@ -38,3 +38,25 @@ var maxSlidingWindow = function (nums, k) {
     }
     return res;
 };
+
+
+// 2
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var maxSlidingWindow2 = function (nums, k) {
+    // 存储索引/结果
+    const q = [], res = [], len = nums.length;
+    for (let i = 0; i < len; i++) {
+        while (q.length && nums[i] >= nums[q[q.length - 1]]) {
+            q.pop();
+        }
+        q.push(i);
+        // 判断当前最大值（即队首元素）是否在窗口中，若不在便将其出队
+        while (q[0] <= i - k) q.shift();
+        if (i >= k - 1) res.push(nums[q[0]]);
+    }
+    return res;
+};

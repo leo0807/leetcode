@@ -40,4 +40,29 @@ var findIntegers2 = function (n) {
     }
     return res;
 }
-//
+// dp
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var findIntegers = function (n) {
+    const dp = new Array(32).fill(0);
+    dp[0] = 1, dp[1] = 2;
+    for (let i = 2; i < 32; i++) {
+        dp[i] = dp[i - 1] + dp[i - 2];
+    }
+    let res = 0;
+    let preBit = 0; // 记录当前digit的前一个digit
+    let k = 30;     // 指针k, 从二进制数的末位开始向前移动
+    while (k >= 0) {
+        if (n & (1 << k)) // 从低位向高位扫描, 判断第k位是否为1
+        {
+            res += dp[k];
+            if (preBit) return res; // 出现了连续的1, 直接返回res
+            preBit = 1; // 当前digit是1, 将preBit更新为当前digit 1, 为下一轮迭代做准备
+        }
+        else preBit = 0;
+        --k;
+    }
+    return res + 1; // 算上 num 本身
+};

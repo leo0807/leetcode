@@ -1,3 +1,4 @@
+// 双指针列计算
 function trap(height) {
     let left = 0, right = height.length - 1,
         res = 0, leftMax = 0, rightMax = 0;

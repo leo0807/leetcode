@@ -51,4 +51,17 @@ var firstMissingPositive2 = function (nums) {
     return n + 1;
 
 };
-
+// cyclic sort
+var firstMissingPositive = function (nums) {
+    const n = nums.length;
+    for (let i = 0; i < n;) {
+        const index = nums[i] - 1;
+        if (nums[i] > 0 && nums[index] !== nums[i]) {
+            [nums[index], nums[i]] = [nums[i], nums[index]];
+        } else i++;
+    }
+    for (let i = 0; i < n; i++) {
+        if (i + 1 !== nums[i]) return i + 1;
+    }
+    return n + 1;
+};

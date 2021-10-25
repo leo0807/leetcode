@@ -35,3 +35,4 @@ function mergeTwoLists(l1, l2) {
     res.next = l1 === null ? l2 : l1;
     return head.next;
 }
+

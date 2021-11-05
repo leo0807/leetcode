@@ -14,3 +14,21 @@ var subsets = function (nums) {
     }
     return subsets;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function (nums) {
+    const res = [], subsets = [], n = nums.length;
+    const dfs = function (currentIndex) {
+        res.push(Array.from(subsets));
+        for (let i = currentIndex; i < n; i++) {
+            subsets.push(nums[i]);
+            dfs(i + 1);
+            subsets.pop();
+        }
+    }
+    dfs(0);
+    return res;
+};

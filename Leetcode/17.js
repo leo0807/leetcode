@@ -89,3 +89,27 @@ var letterCombinations3 = function (digits) {
     }
     return queue;
 };
+
+
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function (digits) {
+    if (!digits.length) return [];
+    const n = digits.length, res = [], path = [];
+    const map = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"];
+    dfs(0);
+    function dfs(i) {
+        if (path.length === n) {
+            res.push(path.join(''));
+            return;
+        }
+        for (const v of map[digits[i]]) {
+            path.push(v);
+            dfs(i + 1);
+            path.pop();
+        }
+    }
+    return res;
+};

@@ -1,6 +1,7 @@
 /**
  * @param {number} n
  * @return {number}
+ * 贪心算法
  */
 var integerBreak = function (n) {
     if (n === 1 || n === 2) return 1;

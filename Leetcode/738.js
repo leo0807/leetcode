@@ -20,3 +20,26 @@ function checkNum(num) {
   }
   return true;
 }
+
+
+/**
+ * @param {number} n
+ * @return {number}
+ * 贪心算法
+ * 倒序遍历，利用前一个值
+ */
+var monotoneIncreasingDigits = function (n) {
+  n = n.toString().split('').map(Number);
+  let flag = n.length;
+  for (let i = n.length - 1; i > 0; i--) {
+    if (n[i - 1] > n[i]) {
+      flag = i;
+      n[i - 1]--;
+      n[i] = 9;
+    }
+  }
+  for (let i = flag; i < n.length; i++) {
+    n[i] = 9;
+  }
+  return Number(n.join(''));
+};

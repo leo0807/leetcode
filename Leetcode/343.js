@@ -16,12 +16,20 @@ var integerBreak = function (n) {
     return product;
 };
 
-const integerBreak2 = function (n) {
-    const dp = new Array(n + 1).fill(1);
+/**
+ * @param {number} n
+ * @return {number}
+ * DP
+ * 1. j * dp[i - j] 是对 i - j 的拆分， 是尝试多个数字相乘
+ * 2. j * (i - j) 是尝试两个数字相乘
+ */
+var integerBreak = function (n) {
+    const dp = new Array(n + 1).fill(0);
+    dp[2] = 1;
     for (let i = 2; i <= n; i++) {
         for (let j = 1; j < i; j++) {
-            dp[i] = Math.max(dp[i](Math.max(j, dp[j])) * (Math.max(i - j, dp[i - j])));
+            dp[i] = Math.max.call(null, dp[i], j * dp[i - j], j * (i - j));
         }
     }
     return dp[n];
-}
+};

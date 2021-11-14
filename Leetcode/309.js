@@ -20,7 +20,7 @@ var maxProfit = function (prices) {
     // 今天买股票。2.第i - 1天持股，今天不卖出，保持持股状态。
     dp[i][1] = Math.max(dp[i - 1][0] - prices[i], dp[i - 1][1]);
     // 只有前一天卖出股票，第i天才会处于冷冻期(此时dp[i - 1][1]为负数)
-    dp[i][2] = dp[i - 1][1] + prices[i]
+    dp[i][2] = dp[i - 1][1] + prices[i];
   }
   // 只有最后一天不持股或者前一天已经卖掉了才能有最大值
   return Math.max(dp[n - 1][0], dp[n - 1][2]);

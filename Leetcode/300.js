@@ -1,6 +1,12 @@
 /**
  * @param {number[]} nums
  * @return {number}
+ * dp[i]: 所有长度为i+1的递增子序列中, 最小的那个序列尾数.
+ * 由定义知dp数组必然是一个递增数组, 可以用 maxL 来表示最长递增子序列的长度.
+ * 1. num > dp[maxL], 表示num比所有已知递增序列的尾数都大, 
+ * 将num添加入dp数组尾部, 并将最长递增序列长度maxL加1
+ * 
+ * 2. dp[i-1] < num <= dp[i], 只更新相应的dp[i]
  */
 var lengthOfLIS = function (nums) {
     let max = 0;

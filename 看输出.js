@@ -214,3 +214,21 @@ let fn = myMan.get_name;
 fn(); //undefined
 // 每个函数都有一个prototype属性，这个属性是一个指针，指向一个对象，
 // 而这个对象的用途是包含可以由特定类型的所有实例共享的属性和方法。
+
+
+
+var length = 10;
+function fn() {
+    return this.length + 1;
+}
+var obj1 = {
+    length: 5,
+    test1: function () {
+        return fn()
+    }
+}
+obj1.test2 = fn;
+obj1.test1.call()
+obj1.test1()
+obj1.test2.call()
+obj1.test2()

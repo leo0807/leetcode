@@ -16,3 +16,34 @@ function dfs(left, right, n, s, res) {
         dfs(left, right + 1, n, s + ")", res);
     }
 }
+
+
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var generateParenthesis = function (n) {
+    const count = [0, 0], res = [], path = [];
+    const dfs = function (n) {
+        if (path.length === 2 * n) {
+            res.push(path.join(""));
+            // return;
+        }
+        if (count[0] < n) {
+            path.push('(');
+            count[0]++;
+            dfs(n);
+            count[0]--;
+            path.pop();
+        }
+        if (count[1] < n && count[0] > count[1]) {
+            path.push(')');
+            count[1]++;
+            dfs(n);
+            count[1]--;
+            path.pop();
+        }
+    }
+    dfs(n);
+    return res;
+};

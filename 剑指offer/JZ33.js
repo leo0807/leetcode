@@ -3,12 +3,18 @@
  * @return {boolean}
  */
 var verifyPostorder = function (postorder) {
+    // 终止条件： 当 left >= right ，说明此子树节点数量 ≤ 1 ，无需判别正确性，因此直接返回 true
     const helper = function (nums, left, right) {
         if (left >= right) return true;
+        // 存储左子树的左边界
         let i = left;
         while (nums[i] < nums[right]) i++;
+        // 分界点
         let j = i;
         while (nums[i] > nums[right]) i++;
+        // 确定右子树的所有节点大于根节点
+        // 左子树区间 [left, j - 1]
+        // 右子树区间 [j, right - 1]
         return i === right && helper(nums, left, j - 1) && helper(nums, j, right - 1);
     };
     return helper(postorder, 0, postorder.length - 1);

@@ -20,3 +20,28 @@ var maxEnvelopes = function (envelopes) {
   }
   return max;
 };
+
+/**
+ * @param {number[][]} envelopes
+ * @return {number}
+ */
+var maxEnvelopes = function (envelopes) {
+  let max = 0;
+  const n = envelopes.length;
+  const dp = new Array(n).fill(1);
+  envelopes.sort((a, b) => (a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]));
+  for (const envelope of envelopes) {
+    let left = 0, right = max;
+    while (left < right) {
+      const mid = left + ((right - left) >> 1);
+      if (dp[mid] < envelope[1]) {
+        left = mid + 1;
+      } else {
+        right = mid;
+      }
+    }
+    dp[left] = envelope[1];
+    if (left === max) max++;
+  }
+  return max;
+};

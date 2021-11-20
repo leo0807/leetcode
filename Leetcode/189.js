@@ -16,3 +16,12 @@ function reverseArr(arr, begin, end) {
     }
 
 }
+
+var rotate = function (nums, k) {
+    const n = nums.length;
+    k %= n;
+    for (let i = 0; i < (n - k); i++) {
+        nums.push(nums.shift());
+    }
+    return nums;
+};

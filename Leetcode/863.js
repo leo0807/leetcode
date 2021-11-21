@@ -44,3 +44,54 @@ var distanceK = function (root, target, k) {
     }
     return res;
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} target
+ * @param {number} k
+ * @return {number[]}
+ */
+var distanceK = function (root, target, k) {
+    const res = [];
+    if (!root) return res;
+    const map = new Map();
+    const findParents = function (root) {
+        if (root.left) {
+            map.set(root.left.val, root);
+            findParents(root.left);
+        }
+        if (root.right) {
+            map.set(root.right.val, root);
+            findParents(root.right);
+        }
+    }
+
+    const findAns = (node, from, depth, k) => {
+        if (node == null) {
+            return;
+        }
+        if (depth === k) {
+            res.push(node.val);
+            return;
+        }
+        if (node.left !== from) {
+            findAns(node.left, node, depth + 1, k);
+        }
+        if (node.right !== from) {
+            findAns(node.right, node, depth + 1, k);
+        }
+        if (map.get(node.val) !== from) {
+            findAns(map.get(node.val), node, depth + 1, k);
+        }
+    }
+    findParents(root);
+    findAns(target, null, 0, k);
+    return res;
+};

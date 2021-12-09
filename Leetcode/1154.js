@@ -12,3 +12,4 @@ var dayOfYear = function (date) {
   }
   return sum;
 };
+

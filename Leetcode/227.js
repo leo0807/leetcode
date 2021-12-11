@@ -31,3 +31,37 @@ var calculate = function (s) {
     }
     return stack.reduce((prev, curr) => prev + (curr | 0), 0);
 };
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var calculate = function (s) {
+    let sign = '+', num = '';
+    const stack = [], n = s.length;
+
+    for (const i of s + '+') {
+        if (i === ' ') continue;
+        else if (!isNaN(i)) {
+            num += i;
+        } else {
+            switch (sign) {
+                case '+':
+                    stack.push(Number(num));
+                    break;
+                case '-':
+                    stack.push(-Number(num));
+                    break;
+                case '*':
+                    stack.push(stack.pop() * Number(num));
+                    break;
+                case '/':
+                    stack.push(stack.pop() / Number(num) | 0);
+                    break;
+            }
+            num = '';
+            sign = i;
+        }
+    }
+    return stack.reduce((prev, curr) => prev + curr | 0, 0);
+};

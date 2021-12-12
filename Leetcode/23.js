@@ -36,3 +36,20 @@ function mergeTwoLists(l1, l2) {
     return head.next;
 }
 
+var mergeKLists = function (lists) {
+    const res = new ListNode(0);
+    let cur = res, arr = [];
+    for (let i = 0, n = lists.length; i < n; i++) {
+        let node = lists[i];
+        while (node) {
+            arr.push(node.val);
+            node = node.next;
+        }
+    }
+    arr.sort((a, b) => a - b);
+    while (arr.length) {
+        cur.next = new ListNode(arr.shift());
+        cur = cur.next
+    }
+    return res.next;
+};

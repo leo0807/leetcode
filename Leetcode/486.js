@@ -16,3 +16,26 @@ var PredictTheWinner = function (nums) {
     }
     return dp[0][n - 1] >= 0;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var PredictTheWinner = function (nums) {
+    const sum = nums.reduce((prev, curr) => prev + curr);
+    const first = func(nums, 0, nums.length - 1);
+    return first >= (sum - first);
+};
+
+function func(nums, i, j) {
+    if (i === j) {
+        return nums[i];
+    }
+    if (i + 1 === j) {
+        return Math.max(nums[i], nums[j]);
+    }
+    return Math.max(
+        nums[i] + Math.min(func(nums, i + 1, j - 1), func(nums, i + 2, j)),
+        nums[j] + Math.min(func(nums, i + 1, j - 1), func(nums, i, j - 2))
+    );
+}

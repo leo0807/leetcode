@@ -4,7 +4,8 @@ class Solution:
 
         for i, j, k in bookings:
             counter[i - 1] += k
-            if j < n: counter[j] -= k
+            if j < n:
+                counter[j] -= k
         for i in range(n + 1):
             counter[i] += counter[i - 1]
         return counter[:-1]

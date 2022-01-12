@@ -3,8 +3,6 @@ package Leetcode.UnionFind;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.print.Doc;
-
 public class DisjoinSet {
   private Map<Long, Node> map = new HashMap<>();
 

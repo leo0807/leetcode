@@ -27,8 +27,8 @@ function minNumberInRotateArray(rotateArray) {
 // O(n) 时间复杂度
 // class Solution:
 //     def minArray(self, numbers: List[int]) -> int:
-// for i in range(0, len(numbers)):
-//     if i == len(numbers) - 1:
-//         return numbers[0]      #如果已经是升序 则返回第一个元素
-// if numbers[i] - numbers[i + 1] > 0:
-//     return numbers[i + 1]    #否则找两段的升降交界点，交界点后一个就是最小值
+//         for i in range(0, len(numbers)):
+//             if i == len(numbers) - 1:
+//                 return numbers[0]      #如果已经是升序 则返回第一个元素
+//             if numbers[i] - numbers[i + 1] > 0:
+//                 return numbers[i + 1]    #否则找两段的升降交界点，交界点后一个就是最小值

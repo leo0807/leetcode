@@ -32,3 +32,20 @@ function minNumberInRotateArray(rotateArray) {
 //                 return numbers[0]      #如果已经是升序 则返回第一个元素
 //             if numbers[i] - numbers[i + 1] > 0:
 //                 return numbers[i + 1]    #否则找两段的升降交界点，交界点后一个就是最小值
+
+
+// class Solution {
+//     public int minArray(int[] numbers) {
+//         if (numbers.length == 0) return 0;
+//         if (numbers.length == 1) return numbers[0];
+//         LinkedList < Integer > stack = new LinkedList <> ();
+//         stack.add(numbers[0]);
+//         for (int i = 1; i < numbers.length; i++) {
+//             if (stack.peekLast() > numbers[i]) {
+//                 return numbers[i];
+//             }
+//             stack.add(numbers[i]);
+//         }
+//         return numbers[0];
+//     }
+// }

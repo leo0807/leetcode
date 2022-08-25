@@ -49,3 +49,23 @@ function minNumberInRotateArray(rotateArray) {
 //         return numbers[0];
 //     }
 // }
+
+// class Solution {
+// public:
+//     int minArray(vector<int>& numbers) {
+//         if(numbers.size()==1){return numbers[0];}
+//         if(numbers[0]<numbers[numbers.size()-1]) return numbers[0];
+//         return fun(numbers,0,numbers.size()-1);
+//     }
+//     int fun(vector<int>& numbers, int s, int e){
+//         int k=(s+e)>>1;
+//         if(k==s) return min(numbers[k+1],numbers[k]);
+//         if(numbers[k]>numbers[e]){
+//             return fun(numbers,k,e);
+//         }else if(numbers[k]<numbers[e]) {
+//             return fun(numbers,s,k);
+//         } else{
+//             return min(fun(numbers,k,e),fun(numbers,s,k));
+//         }
+//     }
+// };

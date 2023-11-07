@@ -14,3 +14,20 @@ var maxPower = function (s) {
     }
     return max;
 };
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var maxPower1 = function (s) {
+    const length = s.length;
+    let left = 0, right = 0, res = 0;
+    while (left < length) {
+        while (left < length && s.charAt(left) === s.charAt(right)) {
+            right++;
+        }
+        res = Math.max(res, right - left);
+        left = right;
+    }
+    return res;
+};

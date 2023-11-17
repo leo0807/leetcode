@@ -21,4 +21,5 @@ var distributeCoins = function (root) {
   }
   dfs(root);
   return sum;
+
 };

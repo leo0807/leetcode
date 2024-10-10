@@ -51,3 +51,35 @@ var lengthOfLIS = function (nums) {
     }
     return res;
 };
+
+// 单调栈
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var lengthOfLIS = function(nums) {
+    function bisectLeft(arr, value, lo=0, hi=arr.length) {
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (arr[mid] < value) {
+            lo = mid + 1;
+            } else {
+            hi = mid;
+            }
+        }
+        return lo;
+    }
+    const stack = [], length = nums.length;
+    let res = 0;
+
+    for (let i = 0; i < length; i++) {
+        if (stack.length === 0 || stack[stack.length - 1] < nums[i]){
+            stack.push(nums[i]);
+        } else {
+            const index = bisectLeft(stack, nums[i]);
+            stack[index] = nums[i];
+        }
+    }
+
+    return stack.length;
+};
